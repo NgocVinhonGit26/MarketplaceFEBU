@@ -1,0 +1,38 @@
+.top-sales {
+    max-width: 250px;
+
+    .product_list_widget {
+
+        .product_list_widget_item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ebebeb;
+
+            a {
+                display: block;
+                margin-bottom: 10px;
+                padding-left: 70px; // overflow: hidden;
+                // text-overflow: ellipsis;
+                line-height: 1.0;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    object-fit: cover;
+                    object-position: 50% 50%;
+                }
+
+                .product-title {
+                    font-size: 15px;
+                }
+            }
+
+            .product-price {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding-left: 40px;
+            }
+        }
+    }
+}

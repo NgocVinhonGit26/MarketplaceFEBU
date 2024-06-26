@@ -1,0 +1,47 @@
+.css-h93ljk-MuiTypography-root {
+    min-height: 44.8px !important;
+
+}
+
+.title-card {
+    font-size: 1.2em !important;
+    font-weight: 600 !important;
+    color: #578e3d;
+    line-height: 1.3;
+}
+
+.price {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+
+.detail-infor {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+    max-height: 22px !important;
+
+    .title-infor {
+        display: flex;
+
+        .icon-infor {
+            margin-right: 1.5em;
+
+            img {
+                height: 22px;
+            }
+        }
+
+        .text-infor {
+            font-weight: 600;
+        }
+    }
+
+    .value-infor {
+        max-width: 34.3918%;
+    }
+}

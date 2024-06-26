@@ -1,0 +1,71 @@
+.Container-DetailTour {
+
+    .DetailTour {
+        max-width: 1242.5px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .Breadcrumb-Title {
+            padding: 30px;
+
+            .Breadcrumb-Container {
+                .css-63vwl1-MuiTypography-root-MuiBreadcrumbs-root {
+                    font-size: 0.8em !important;
+                }
+
+                .css-1gqyz35-MuiTypography-root {
+                    font-size: 1em !important;
+                }
+            }
+
+            .Title-Container {
+                .Title-Tour {
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .Content-DetailTour {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+
+            .Detail-Description-Container {
+                max-width: 65.667%;
+            }
+
+            .Consultation-table {
+                max-width: 33.333%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .recommend-tour {
+            // background-color: white;
+
+            .title-recommend {
+
+                padding-top: 10px;
+
+                h3 {
+                    padding: 10px;
+                    font-size: 1.3em;
+                    color: #67A448;
+                }
+
+                .Divider {
+                    height: 3px;
+                    max-width: 98%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: #67A448;
+                }
+            }
+
+
+        }
+    }
+}

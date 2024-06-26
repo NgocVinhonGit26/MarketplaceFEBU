@@ -1,0 +1,33 @@
+.Container-OrderTour {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #DEFAE8;
+
+    .OrderTour {
+
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        max-width: 1400px;
+
+        .Content-OrderTour {
+            margin-left: auto;
+            margin-right: auto;
+
+
+            .Title-OrderTour {
+                display: flex;
+                justify-content: center;
+            }
+
+            .Table-OrderTour {
+                border: 1px solid rgb(102, 162, 70);
+                border-radius: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}

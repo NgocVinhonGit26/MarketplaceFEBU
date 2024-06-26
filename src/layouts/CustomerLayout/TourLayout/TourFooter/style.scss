@@ -1,0 +1,18 @@
+.footer {
+    width: 100%;
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 100% !important;
+    }
+
+    .my-5 {
+        margin: 0 !important;
+        padding: 0 !important;
+
+    }
+}

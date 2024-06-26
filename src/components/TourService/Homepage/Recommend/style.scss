@@ -1,0 +1,24 @@
+.container-recommend {
+    margin-bottom: 30px;
+
+    .title-recommend {
+        padding-top: 30px;
+    }
+
+    .grid-recommend {
+        max-width: 1242.5px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 30px;
+
+        .auiui {
+            padding: 0 !important;
+
+            // &:hover {
+            //     transition: all 0.5s ease-in-out;
+            //     transform: scale(1.1);
+            // }
+
+        }
+    }
+}

@@ -1,0 +1,4 @@
+.ck-editor__editable {
+  max-height: 400px;
+  overflow-y: auto; /* Sử dụng 'auto' để hiển thị thanh cuộn chỉ khi cần thiết */
+}

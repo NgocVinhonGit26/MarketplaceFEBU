@@ -1,0 +1,33 @@
+.container-searchpage-tour {
+    .searchpage {
+        // display: flex;
+        max-width: 1060px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 10px 0 20px;
+        margin-bottom: 20px;
+
+        .search-title {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+
+            .search-title-left {
+                .text-search {
+                    h1 {
+                        font-size: 1.5em;
+                    }
+                }
+            }
+
+            .search-title-right {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 100%;
+                min-width: 440px;
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+.container-cardreview {
+    max-width: 25%;
+    height: 380px;
+    padding: 10px 10px 20px 10px;
+    height: 380px;
+    transition: 0.5s;
+
+    &:hover {
+        padding-top: 0;
+        padding-bottom: 30px;
+    }
+
+
+    .card-review {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
+        transition: 0.5s;
+
+
+        &:hover {
+            box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.75);
+        }
+
+        .card-review__img {
+            width: 80px;
+
+            img {
+                border-radius: 999px !important;
+                object-fit: cover;
+            }
+        }
+
+        .card-review__content--text {
+            line-height: 1.4em;
+            font-style: italic !important;
+            font-size: 15px;
+
+        }
+
+        .card-review__content--name {
+            padding-top: 15px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+}
