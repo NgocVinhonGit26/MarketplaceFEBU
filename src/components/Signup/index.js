@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import GGLogin from "components/Signin/GGlogin";
 import { gapi } from "gapi-script";
 import GGLogout from "components/Signin/GGlogout";
+import { createNewSB } from "api/auth";
 
 function Copyright(props) {
   return (
@@ -53,6 +54,18 @@ export default function SignUp() {
   const [isSeller, setIsSeller] = React.useState(false);
   const navigate = useNavigate();
 
+  const [newShopBoat, setNewShopBoat] = React.useState({
+    name: "My Shop Boat",
+    address: "123 River Road",
+    owner: 0,
+    description: "A nice shop boat",
+    avatar: "https://res.cloudinary.com/dkcetq9et/image/upload/v1719261006/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz_ryssyl.jpg",
+    phoneNumber: "1234567890",
+    status: 0,
+    code: "SHOP123",
+    type: "Grocery"
+  });
+
   const validation = () => {
     if (!username || !password || !name)
       return false;
@@ -67,12 +80,14 @@ export default function SignUp() {
     }
     try {
       const response = await signupService(name, address, username, password, isSeller);
-      // console.log("response", response);
       if (response?.status === 200 && response?.data?.message === "User registration was successful") {
         successToast("Đăng ký thành công !!! Quý khách vui lòng đăng nhập để sử dụng dịch vụ");
-        navigate("/signin");
-      }
-      if (response?.status === 200 && response?.data?.message === "User already exist") {
+        if (isSeller) {
+          setNewShopBoat((prevShopBoat) => ({ ...prevShopBoat, owner: response.data.id }));
+        } else {
+          navigate("/signin");
+        }
+      } else if (response?.status === 200 && response?.data?.message === "User already exist") {
         errorToast("Tài khoản này đã tồn tại");
       }
     } catch (error) {
@@ -81,20 +96,37 @@ export default function SignUp() {
     }
   };
 
+  const createShopBoat = async () => {
+    try {
+      const response = await createNewSB(newShopBoat);
+      if (response.status === 200) {
+        navigate("/signin");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    if (newShopBoat.owner !== 0) {
+      createShopBoat();
+    }
+  }, [newShopBoat.owner]);
+
   const reditectToSignIn = (event) => {
     event.preventDefault();
     navigate("/signin");
   }
 
-  React.useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientId,
-        scope: ''
-      })
-    }
-    gapi.load('client:auth2', start)
-  })
+  // React.useEffect(() => {
+  //   function start() {
+  //     gapi.client.init({
+  //       clientId: clientId,
+  //       scope: ''
+  //     })
+  //   }
+  //   gapi.load('client:auth2', start)
+  // })
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -192,7 +224,7 @@ export default function SignUp() {
               Sign Up
             </Button>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <GGLogin />
+              {/* <GGLogin /> */}
             </div>
             {/* <GGLogout /> */}
             <Grid container justifyContent="flex-end">

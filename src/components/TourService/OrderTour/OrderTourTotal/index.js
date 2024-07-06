@@ -22,7 +22,7 @@ function createData(name, price) {
     return { name, price };
 }
 
-const accessToken = localStorage.getItem("accessToken");
+
 
 
 
@@ -31,7 +31,7 @@ const OrderTourTotal = ({ totalPrice }) => {
     const listOrderTour = useSelector((state) => state.listOrderTour.list);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const accessToken = localStorage.getItem("accessToken");
 
     // console.log("totalPrice >>>>>", totalPrice)
     const rows = [

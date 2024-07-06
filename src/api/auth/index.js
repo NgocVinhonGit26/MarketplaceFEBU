@@ -59,4 +59,13 @@ const checkEmail = async (email) => {
   }
 }
 
-export { signinService, signupService, signoutService, checkEmail };
+const createNewSB = async (data = {}) => {
+  try {
+    const response = await instance.post(`/signup/isMerchant`, data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { signinService, signupService, signoutService, checkEmail, createNewSB };
