@@ -7,6 +7,7 @@ import { Container, Row, Col, Card, Badge } from "react-bootstrap";
 import moment from "moment";
 import { useEffect } from "react";
 import { getOrderItemByOrderProductId } from "api/shopBoat";
+import { updateQuantityProductById } from "api/product";
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,24 +22,52 @@ const style = {
 
 const DetailModal = ({ order }) => {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
   const accessToken = localStorage.getItem("accessToken");
   const [orderItems, setOrderItems] = React.useState([]);
   const idShopBoat = localStorage.getItem("shopBoatId");
 
-  useEffect(() => {
-    const getOrderItem = async (orderProductId) => {
-      try {
-        const response = await getOrderItemByOrderProductId(idShopBoat, orderProductId, accessToken);
-        // console.log(response.data);
-        setOrderItems(response.data);
-      } catch (err) {
-        console.log(err);
-      }
+
+  const getOrderItem = async (orderProductId) => {
+    try {
+      const response = await getOrderItemByOrderProductId(idShopBoat, orderProductId, accessToken);
+      // console.log("item keme: ", response.data);
+      setOrderItems(response.data);
+    } catch (err) {
+      console.log(err);
     }
+  }
+  // if (open) {
+
+  // }
+  const handleOpen = () => {
+    setOpen(true)
     getOrderItem(order.id);
-  }, [open]);
+  };
+  const handleClose = () => setOpen(false);
+
+
+  // const updateQuantityProduct = async (id, orderQuantity) => {
+  //   try {
+  //     const response = await updateQuantityProductById(id, orderQuantity, accessToken);
+
+  //   }
+  //   catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   if (isCompleted) {
+
+  //     orderItems.forEach((item) => {
+  //       console.log("item akaka: ", item);
+  //       updateQuantityProduct(item.productId, item.quantity);
+  //     });
+  //     setIsCompleted(false);
+  //     setOrderItems([]);
+  //   }
+  // }, [isCompleted]);
 
   return (
     <div>

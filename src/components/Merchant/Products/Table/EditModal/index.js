@@ -18,6 +18,7 @@ import * as React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { uploadImage, deleteImage } from "api/image";
 import { updateProductById } from "api/shopBoat";
+import { errorToast } from "utilities/toast";
 
 const animatedComponents = makeAnimated();
 EditModal.propTypes = {
@@ -134,6 +135,36 @@ function EditModal({ product, updateData }) {
       category: selectedCategories,
       updated_at: new Date().toISOString(),
       videoInfor: videoInfor,
+    }
+
+    if (data.name === "") {
+      errorToast("Tên sản phẩm không được để trống");
+      return
+    }
+    if (data.price === 0) {
+      errorToast("Đơn giá không được để trống");
+      return
+    }
+    if (data.countInStock === 0) {
+      errorToast("Số lượng trong kho không được để trống");
+      return
+    }
+    if (data.unit === "") {
+      errorToast("Đơn vị không được để trống");
+      return
+    }
+    if (data.category === "") {
+      errorToast("Nhãn sản phẩm không được để trống");
+      return
+    }
+
+    if (data.description === "") {
+      errorToast("Mô tả sản phẩm không được để trống");
+      return
+    }
+    if (data.videoInfor === "") {
+      errorToast("Thông tin bổ sung không được để trống");
+      return
     }
     try {
       const response = await updateProductById(product.id, data, accessToken);

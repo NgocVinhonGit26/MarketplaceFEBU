@@ -114,6 +114,30 @@ const EditModal = ({ tour, setTours }) => {
   const handleSubmit = async () => {
     // event.preventDefault();
     //console.log("Dữ liệu tour:", tourData);
+    if (tourData.name === '') {
+      errorToast("Tên tour không được để trống")
+      return
+    }
+    if (tourData.startTime === '') {
+      errorToast("Thời gian bắt đầu không được để trống")
+      return
+    }
+    if (tourData.startLocation === '') {
+      errorToast("Nơi khởi hành không được để trống")
+      return
+    }
+    if (tourData.tourDuration === '') {
+      errorToast("Thời gian tour không được để trống")
+      return
+    }
+    if (tourData.price === 0) {
+      errorToast("Giá không được để trống")
+      return
+    }
+    if (tourData.transport === '') {
+      errorToast("Phương tiện không được để trống")
+      return
+    }
 
     try {
       const res = await updateTourById(tour.id, tourData, accessToken);

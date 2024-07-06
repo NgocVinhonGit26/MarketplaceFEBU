@@ -10,6 +10,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { createNewProduct } from "api/shopBoat";
 import * as React from "react";
+import { errorToast } from "utilities/toast";
 
 const animatedComponents = makeAnimated();
 AddModal.propTypes = {
@@ -126,6 +127,36 @@ function AddModal({ updateData, addProduct }) {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       videoInfor: videoInfor
+    }
+
+    if (data.name === "") {
+      errorToast("Tên sản phẩm không được để trống");
+      return
+    }
+    if (data.price === 0) {
+      errorToast("Đơn giá không được để trống");
+      return
+    }
+    if (data.countInStock === 0) {
+      errorToast("Số lượng trong kho không được để trống");
+      return
+    }
+    if (data.unit === "") {
+      errorToast("Đơn vị không được để trống");
+      return
+    }
+    if (data.category === "") {
+      errorToast("Nhãn sản phẩm không được để trống");
+      return
+    }
+
+    if (data.description === "") {
+      errorToast("Mô tả sản phẩm không được để trống");
+      return
+    }
+    if (data.videoInfor === "") {
+      errorToast("Thông tin bổ sung không được để trống");
+      return
     }
 
     // console.log("data >>>>", data);

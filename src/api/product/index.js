@@ -222,6 +222,22 @@ const getTotalPageProductAdmin = (page, query, token) => {
 }
 
 
+const updateQuantityProductById = (id, orderQuantity, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = instance.post(`/merchant/updateQuantityProductById/${id}/${orderQuantity}`, {}, config);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 
 
 export {
@@ -234,5 +250,6 @@ export {
   getTotalPageProduct,
   getProductByCategory,
   getAllProductAdmin,
-  getTotalPageProductAdmin
+  getTotalPageProductAdmin,
+  updateQuantityProductById
 };

@@ -16,6 +16,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "@mui/material/Tooltip";
 import { getOrderItemByOrderProductId } from "api/shopBoat";
+import { updateQuantityProductById } from "api/product";
+import { set } from "date-fns";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -44,15 +46,6 @@ export default function OrdersTable({ orders, updateData }) {
   const [status, setStatus] = React.useState("pending");
 
 
-  // const getOrderItem = async (orderProductId, status) => {
-  //   try {
-  //     const response = await getOrderItemByOrderProductId(idShopBoat, orderProductId, accessToken);
-  //     setOrderItems(response.data);
-  //     setStatus(status);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
 
   const handleChaneStatus = async (orderProductId, status) => {
@@ -67,8 +60,17 @@ export default function OrdersTable({ orders, updateData }) {
           }
           return order;
         });
+
         // console.log("newOrder>>>>>", newOrder);
         updateData(newOrder);
+        if (status === "completed") {
+          const response = await getOrderItemByOrderProductId(idShopBoat, orderProductId, accessToken);
+          // console.log("response.data>>>>>", response.data);
+          response.data.map(async (item) => {
+            const response = await updateQuantityProductById(item.productId, item.quantity, accessToken);
+            // console.log("response>>>>>", response);
+          });
+        }
 
       }
 
@@ -77,18 +79,7 @@ export default function OrdersTable({ orders, updateData }) {
     }
   };
 
-  // if (orderItems.length > 0) {
-  //   orderItems.map((item) => {
-  //     handleChaneStatus(item.id);
-  //   });
-  // }
 
-
-
-
-  useEffect(() => {
-    // console.log("orders>>>>>>", orders);
-  }, [orders]);
 
   return (
     <TableContainer component={Paper}>
@@ -163,7 +154,10 @@ export default function OrdersTable({ orders, updateData }) {
                 )}
               </StyledTableCell>
               <StyledTableCell align="center">
-                <DetailModal order={order} />
+                <DetailModal
+                  order={order}
+
+                />
               </StyledTableCell>
               <StyledTableCell align="center">
                 {order.statusOrderItems === "pending" && (

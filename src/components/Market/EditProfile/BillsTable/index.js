@@ -151,9 +151,12 @@ export default function BillsTable() {
     }, []);
 
     const rows = Array.from({ length: dataLength }, (_, index) => {
-        const selection = data[index];
-        return createData(index, ...selection);
-    });
+        const rowData = data[index];
+        if (rowData && rowData[3] !== 0) {
+            return createData(index, ...rowData);
+        }
+        return null; // Filter out rows that should not be included
+    }).filter(row => row !== null); // Remove null values from rows
 
     return (
         isShowDetail ? (
