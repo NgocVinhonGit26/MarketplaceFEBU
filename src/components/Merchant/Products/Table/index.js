@@ -130,7 +130,7 @@ export default function ProductsTable({
                 <EditModal product={product} updateData={updateData} />{" "}
                 <Button
                   variant="danger"
-                  onClick={() => handleDeleteProduct(product._id)}
+                  onClick={() => handleDeleteProduct(product.id)}
                 >
                   Xóa
                 </Button>

@@ -84,7 +84,7 @@ const MerchantProducts = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await deleteProduct(id);
+      const response = await deleteProduct(id, accessToken);
       if (response) {
         let newProducts = products.filter((product) => product.id !== id);
         setProducts(newProducts);
